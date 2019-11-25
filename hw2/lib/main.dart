@@ -38,7 +38,7 @@ class HW2State extends State<HW2> {
       appBar: AppBar(
         title: Text('HW 2'),
         centerTitle: true,
-      ),
+      ), 
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
