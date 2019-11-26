@@ -23,20 +23,46 @@ Future<bool> exitApp(BuildContext context) =>
     ) ??
         false;
 
-Future<bool> showAlertWithData(BuildContext context, data) =>
+Future<String> showAlertWithData(BuildContext context, data) =>
     showDialog(
       context: context,
       builder: (context) => CupertinoAlertDialog(
         title: Text('Hey!'),
-        content: Text("Data is ${data.toString()}"),
+        content: Text("Do you want to return ${data.toString()}?"),
         actions: <Widget>[
           FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text('First action button'),
+            onPressed: () => Navigator.of(context).pop(data.toString()),
+            child: Text('Yes'),
           ),
           FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: Text('Second action button'),
+            child: Text('No'),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      ),
+    ) ??
+        null;
+
+Future<bool> showSuccessfullAlertWithData(BuildContext context, data) =>
+    showDialog(
+      context: context,
+      builder: (context) => CupertinoAlertDialog(
+        title: Text('Hey!'),
+        content: Text("You successfully returned ${data.toString()}?"),
+        actions: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
+            child: Text('Yes'),
+          ),
+          FlatButton(
+            child: Text('No'),
+            onPressed: () {
+              Navigator.of(context).pop(false);
+            },
           ),
         ],
       ),

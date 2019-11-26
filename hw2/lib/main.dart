@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                       MaterialPageRoute(builder: (ctx) => SecondPage()),
                     );
                     if (result != null) {
-                      showAlertWithData(context, result);
+                      showSuccessfullAlertWithData(context, result);
                     }
                   },
                 ),
@@ -67,16 +67,22 @@ class SecondPage extends StatelessWidget {
               CupertinoButton(
                 color: Colors.cyanAccent[100],
                 child: Text("Return 42"),
-                onPressed: () {
-                  Navigator.of(context).pop("42");
+                onPressed: () async {
+                  final result = await showAlertWithData(context, "42");
+                  if (result != null) {
+                    Navigator.of(context).pop(result);
+                  }
                 },
               ),
               SizedBox(height: 20,),
               CupertinoButton(
                 color: Colors.cyanAccent[100],
                 child: Text("Return AbErVaLlG"),
-                onPressed: () {
-                  Navigator.of(context).pop("AbErVaLlG");
+                onPressed: () async {
+                  final result = await showAlertWithData(context, "AbErVaLlG");
+                  if (result != null) {
+                    Navigator.of(context).pop(result);
+                  }
                 },
               ),
             ],
