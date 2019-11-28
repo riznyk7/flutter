@@ -50,7 +50,7 @@ Future<bool> showSuccessfullAlertWithData(BuildContext context, data) =>
       context: context,
       builder: (context) => CupertinoAlertDialog(
         title: Text('Hey!'),
-        content: Text("You successfully returned ${data.toString()}?"),
+        content: Text("You've selected user: ${data.name}"),
         actions: <Widget>[
           FlatButton(
             onPressed: () {
